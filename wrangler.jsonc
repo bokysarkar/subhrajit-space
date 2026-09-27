@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "subhrajit-space",
+  "compatibility_date": "2026-09-26",
+  "observability": { "enabled": true },
+  // Static site served from ./public
+  "assets": { "directory": "./public" },
+  // Serve on the apex domain (requires subhrajit.space to be a zone in this Cloudflare account)
+  "routes": [
+    { "pattern": "subhrajit.space", "custom_domain": true },
+    { "pattern": "www.subhrajit.space", "custom_domain": true }
+  ]
+}
