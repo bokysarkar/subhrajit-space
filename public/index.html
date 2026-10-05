@@ -70,12 +70,23 @@
       <!-- ===== Previously worked with ===== -->
       <section class="companies container" aria-labelledby="companies-title">
         <h2 class="section-title" id="companies-title" data-reveal>previously worked with</h2>
-        <ul class="companies__grid" data-reveal-group>
-          <li data-reveal><img src="/assets/norstella-light.png" alt="Norstella" width="158" height="34" /></li>
-          <li data-reveal><img src="/assets/mmit-light.png" alt="MMIT" width="154" height="40" /></li>
-          <li data-reveal><img src="/assets/teg-analytics-light.png" alt="TEG Analytics" width="152" height="40" /></li>
-          <li data-reveal><img src="/assets/healthworks-ai-light.png" alt="HealthWorks AI" width="258" height="38" /></li>
-        </ul>
+        <div class="rail" data-reveal>
+          <div class="rail__track">
+            <ul class="rail__set">
+            <li><img src="/assets/norstella-light.png" alt="Norstella" width="158" height="34" /></li>
+            <li><img src="/assets/mmit-light.png" alt="MMIT" width="154" height="40" /></li>
+            <li><img src="/assets/teg-analytics-light.png" alt="TEG Analytics" width="152" height="40" /></li>
+            <li><img src="/assets/healthworks-ai-light.png" alt="HealthWorks AI" width="258" height="38" /></li>
+            </ul>
+            <!-- Duplicate set for a seamless loop; hidden from screen readers -->
+            <ul class="rail__set" aria-hidden="true">
+            <li><img src="/assets/norstella-light.png" alt="" width="158" height="34" /></li>
+            <li><img src="/assets/mmit-light.png" alt="" width="154" height="40" /></li>
+            <li><img src="/assets/teg-analytics-light.png" alt="" width="152" height="40" /></li>
+            <li><img src="/assets/healthworks-ai-light.png" alt="" width="258" height="38" /></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- ===== Recent works ===== -->
@@ -144,9 +155,8 @@
       <div class="container footer__inner" data-reveal>
         <div class="footer__social">
           <span>Find me on:</span>
-          <!-- TODO: replace # with real profile URLs -->
-          <a href="#" aria-label="LinkedIn"><img src="/assets/linkedin.svg" alt="" width="24" height="24" /></a>
-          <a href="#" aria-label="X"><img src="/assets/x.svg" alt="" width="24" height="24" /></a>
+          <a href="https://www.linkedin.com/in/subhrajit-sarkar-ux" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/assets/linkedin.svg" alt="" width="24" height="24" /></a>
+          <a href="https://x.com/xubhrajit" target="_blank" rel="noopener" aria-label="X"><img src="/assets/x.svg" alt="" width="24" height="24" /></a>
         </div>
         <span>© 2026 Subhrajit Sarkar</span>
       </div>
