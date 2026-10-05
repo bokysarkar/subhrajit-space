@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A MUI-based multi-brand design system — Subhrajit Sarkar</title>
+  <meta name="description" content="Case study: NXP, one MUI-based design system serving five brands — token architecture, component specs, the MUI bridge, governance and impact." />
+  <link rel="canonical" href="https://subhrajit.space/work/mui-design-system/" />
+  <meta name="theme-color" content="#232107" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://subhrajit.space/work/mui-design-system/" />
+  <meta property="og:title" content="A MUI-based design system that serves multiple brands" />
+  <meta property="og:description" content="One design system, five brands, no forked components." />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/case-study.css" />
+</head>
+<body class="case">
+  <canvas class="shader-bg" data-shader="hero" aria-hidden="true"></canvas>
+
+  <div class="page">
+    <div class="container">
+      <a class="case__back" href="/" data-reveal>
+        <img src="/assets/brand-mark.svg" alt="" width="37" height="45" />
+        <span>subhrajit<span class="brand__dot">.</span>space</span>
+      </a>
+    </div>
+
+    <!-- ===== Hero ===== -->
+    <header class="case-hero container">
+      <div class="case-hero__header">
+        <h1 class="case-hero__title" data-reveal>a MUI based design system that serves multiple brands</h1>
+        <div class="case-hero__image" data-reveal role="img" aria-label="Hero image placeholder"></div>
+      </div>
+      <dl class="case-hero__meta" data-reveal-group>
+        <div data-reveal><dt>duration</dt><dd>Ongoing</dd></div>
+        <div data-reveal><dt>role</dt><dd>UX designer</dd></div>
+        <div class="case-hero__overview" data-reveal>
+          <dt>overview</dt>
+          <dd>an experience designer<br />building data-rich digital interfaces for the last 5 years<br />now working in design system and AI &amp; agentic interfaces</dd>
+        </div>
+      </dl>
+    </header>
+
+    <main class="case-body container">
+      <!-- ===== Problem ===== -->
+      <section aria-labelledby="s-problem">
+        <h2 class="case-section__label" id="s-problem" data-reveal>Problem</h2>
+        <div class="case-section__articles">
+          <article>
+            <div class="article__image" data-reveal></div>
+            <div data-reveal>
+              <h3 class="article__title">Context</h3>
+              <div class="article__body">
+                <p>My current company is a house of brands: five subsidiaries, each acquired over last few years, each arriving with its own design team, workflow, and component library.</p>
+                <p>The result was fragmentation: localised libraries, different versions of the same core components, inconsistent accessibility, and teams solving the same problems in parallel. Delivery slowed as the portfolio grew.</p>
+                <p>NXP (the Norstella Experience Platform) was built to be one system every brand could build on. The challenge: standardise without flattening five distinct identities. Too rigid, and BUs would fork it. Too flexible, and we'd rebuild the fragmentation inside one library.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== Solution ===== -->
+      <section aria-labelledby="s-solution">
+        <h2 class="case-section__label" id="s-solution" data-reveal>Solution</h2>
+        <div class="case-section__articles">
+          <article>
+            <div class="article__image" data-reveal></div>
+            <div data-reveal>
+              <h3 class="article__title">Colour Token Architecture</h3>
+              <div class="article__body">
+                <p>Colour tokens are built in three tiers, so one set of components can render any brand in either mode.</p>
+                <p><strong>Primitives</strong> hold each brand's raw palette: brand, greyscale, status, and data visualisation scales. Brand is a mode here.</p>
+                <p><strong>Semantic tokens</strong> give colours meaning (text, surface, border) and alias primitives differently per mode. Light/dark is a mode here.</p>
+                <p><strong>Component tokens</strong> assign semantic tokens to specific component parts and states.</p>
+                <p>Two independent switches, brand and mode, mean a new brand only needs a palette. Every component follows automatically.</p>
+              </div>
+            </div>
+          </article>
+
+          <article>
+            <div class="article__image" data-reveal></div>
+            <div data-reveal>
+              <h3 class="article__title">Component Library Breakdown</h3>
+              <div class="article__body">
+                <p><strong>Structure.</strong> NXP's 51 components live in four Figma libraries, loosely following atomic design: foundations (colour, type, spacing, elevation, icons, logos per brand) → components → composites → templates.</p>
+                <p><strong>Specs as contracts.</strong> Every component ships with a spec that defines its contract: anatomy, variant and state matrix, token usage, props mapped to MUI's API, a11y notes for both modes, and a changelog. BU designers use it to build; engineers use it to implement.</p>
+                <p><strong>AI-ready.</strong> Each spec also carries a structured YAML block, so the same contract is readable by LLMs and tooling, not just people.</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-reveal>
+            <h3 class="article__title">The Hard Decisions</h3>
+            <div class="article__body">
+              <p><strong>One mapping, different results.</strong> The same token mapping passed WCAG AA for Brand A but failed for Brand B (3.8:1 vs the required 4.5:1). We remapped the button background to brand/primary/600 [for all brands / for Brand B only], trading [slight visual change for Brand A / a small per-brand exception] for guaranteed contrast.</p>
+              <p><strong>Accessibility over rhythm.</strong> Truncating list titles to two lines looked cleaner, but hid content from users who zoom or rely on full labels. We chose uneven row heights. Accessibility became non-negotiable in every component contract.</p>
+              <p><strong>Fixing it at the source.</strong> Patching tokens wasn't sustainable. For two BUs, we worked with brand leads to rebuild their palettes as contrast-safe scales, so every step above 600 passes AA on light surfaces. Harder to negotiate, but it fixed the problem for every component at once.</p>
+            </div>
+          </article>
+
+          <article>
+            <div class="article__image" data-reveal></div>
+            <div data-reveal>
+              <h3 class="article__title">The MUI Bridge</h3>
+              <div class="article__body">
+                <p><strong>Why MUI.</strong> Our products are data-heavy tools where keyboard navigation, ARIA patterns, and edge cases matter more than bundle size. We weighed building from scratch [or headless] against adopting MUI, and chose MUI: it gave us a strong accessibility baseline and components like [Data Grid] out of the box, so we could spend our effort on brand flexibility.</p>
+                <p><strong>How the bridge works.</strong> Semantic tokens map directly onto MUI's palette (main, light, dark), component tokens feed styleOverrides, and each brand × mode compiles into its own theme. Switching brands is a ThemeProvider swap.</p>
+                <p>We built custom only where MUI had no equivalent, like the vertical filter catalogue.</p>
+              </div>
+            </div>
+          </article>
+
+          <article>
+            <div class="article__image" data-reveal></div>
+            <div data-reveal>
+              <h3 class="article__title">Implementation in Figma vs Storybook</h3>
+              <div class="article__body">
+                <p>Early on, we asked: should Figma component properties mirror the code API one-to-one? Using the Accordion as a test case, we compared both models and concluded they shouldn't.</p>
+                <p><strong>Figma properties are a rendering matrix, not an API.</strong> Properties like trailingButtons or iconStart exist so designers can toggle options on a canvas. Turned into code props, they create a rigid, combinatorial surface. In code, a single summary slot handles all of them.</p>
+                <p><strong>States belong to CSS, not props.</strong> Figma needs Hover, Focused, and Pressed as explicit variants because it can't compute them. In code, they come from MUI and the browser. Exposing them as props would add dead weight and drift.</p>
+                <p><strong>So we reconciled rather than converged.</strong> Code is the contract; Figma is the spec. We aligned naming (sizes, icon model), documented adornments as "composed via slot," marked interaction states as CSS-driven, and linked both sides with Code Connect.</p>
+                <p><strong>The result:</strong> a few hours of alignment per component instead of weeks rebuilding either side.</p>
+              </div>
+            </div>
+          </article>
+
+          <article data-reveal>
+            <h3 class="article__title">Governance &amp; Adoption</h3>
+            <div class="article__body">
+              <p><strong>Lean by default.</strong> MUI offers dozens of props per component; we expose only what BUs need. New props are added on request, documented in Storybook, and kept backward compatible.</p>
+              <p><strong>Core, extended, or local.</strong> Components enter core when two or more BUs need them. Where a BU needs custom behaviour, slots let them extend a component without forking it. Truly unique needs stay BU-local, and can be promoted later.</p>
+              <p><strong>Versioning.</strong> We follow semver: patches for fixes, minor releases for new props, major releases for breaking API or behaviour changes, always with a deprecation period and migration guide.</p>
+              <p><strong>Adoption.</strong> New products build on NXP from day one. Legacy products migrate screen by screen, prioritised by [traffic / release cycle], so teams never pause delivery for a rewrite.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== After thoughts ===== -->
+      <section aria-labelledby="s-after">
+        <h2 class="case-section__label" id="s-after" data-reveal>After thoughts</h2>
+        <div class="case-section__articles">
+          <article data-reveal>
+            <h3 class="article__title">Impact</h3>
+            <div class="article__body">
+              <p><strong>New brand in under a week.</strong> Setup took 3–4 months. Now launching a new brand means supplying a palette; every component follows.</p>
+              <p><strong>Faster handoff.</strong> Specs and MUI-aligned contracts cut handoff from 3-4 days to an hour.</p>
+              <p><strong>Fewer bugs.</strong> Moving 3 BUs from custom libraries to tested, MUI-based components reduced component bug reports by 80%.</p>
+              <p><strong>Accessible by default.</strong> Core components meet WCAG AA in both modes, and a testing guideline covers custom work.</p>
+              <p><strong>Adoption.</strong> All five BUs now build on NXP. New products start on it by default, and legacy products are migrating incrementally, with over 70% of screens already moved to NXP components.</p>
+            </div>
+          </article>
+
+          <article data-reveal>
+            <h3 class="article__title">Reflections</h3>
+            <div class="article__body">
+              <p><strong>Accessibility first, aesthetics second.</strong> A beautiful component that some users can't use isn't finished. Every trade-off in NXP started from that belief.</p>
+              <p><strong>Contrast-safe palettes should have been a day-one requirement.</strong> We patched contrast token by token before fixing it at the source. Building accessible scales first would have saved months of rework.</p>
+              <p><strong>Adoption needs as much design as components do.</strong> Mandating NXP across BUs set the direction, but reducing custom components took more than a rule: it took clear specs, fast support, and components good enough that teams chose them.</p>
+            </div>
+          </article>
+
+          <article data-reveal>
+            <h3 class="article__title">What’s Next</h3>
+            <div class="article__body">
+              <p><strong>Machine-readable specs.</strong> Extending the YAML contracts so LLMs can map specs to Storybook stories and generate draft-ready prototypes.</p>
+              <p><strong>User-controlled accessibility.</strong> A high-contrast theme and density settings (compact, default, comfortable), both built as modes on the existing token architecture.</p>
+              <p><strong>One AI language across five brands.</strong> Chat, embedded AI, and agent interfaces share a distinct gradient and motion language that stays consistent regardless of brand, so AI is recognisable anywhere in the portfolio.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner" data-reveal>
+        <div class="footer__social">
+          <span>Find me on:</span>
+          <!-- TODO: replace # with real profile URLs -->
+          <a href="#" aria-label="LinkedIn"><img src="/assets/linkedin.svg" alt="" width="24" height="24" /></a>
+          <a href="#" aria-label="X"><img src="/assets/x.svg" alt="" width="24" height="24" /></a>
+        </div>
+        <span>© 2026 Subhrajit Sarkar</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/shader.js"></script>
+</body>
+</html>

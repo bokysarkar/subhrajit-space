@@ -1,0 +1,99 @@
+/* --- Design tokens (from Figma: responsiveness-research / portfolio-site) --- */
+:root {
+  --bg: #232107;
+  --tile: #2b2a1a;
+  --card-bg: #0e0e05;
+  --white: #ffffff;
+  --cream: #fef9f1;
+  --muted: rgba(255, 255, 255, 0.6);
+  --label: #cccccc;
+  --yellow: #ffeb00;
+  --purple: #8f2099;
+  --font-head: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --container: 1200px;
+  --gutter: 24px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; border-radius: 2px; }
+
+.container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* --- Shader background --- */
+.shader-bg {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: -80px; left: 0; width: 100%; height: 715px;   /* Figma: 628 overlay + 145 fade, offset -80 */
+}
+.shader-bg.no-webgl {                                 /* fallback when WebGL is unavailable */
+  background: linear-gradient(180deg, #060645 0%, #202099 40%, #8f2099 62%, var(--bg) 92%);
+}
+.page { position: relative; z-index: 1; }
+
+/* --- Progressive reveal (only hidden once JS is confirmed running) --- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1), filter .9s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-visible { opacity: 1; transform: none; filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js [data-reveal] { opacity: 1; transform: none; filter: none; transition: none; }
+}
+
+/* --- Brand: mark + "subhrajit.[rotating word]" --- */
+.brand { display: flex; align-items: center; gap: 20px; }
+.brand__mark { width: 36px; height: auto; flex-shrink: 0; }
+.brand__text {
+  display: flex; align-items: baseline; white-space: nowrap;
+  font-family: var(--font-head); font-weight: 700; line-height: 1.2;
+  font-size: clamp(22px, 6.2vw, 48px);
+}
+.brand__dot { color: var(--yellow); }
+
+.rotator {
+  position: relative; display: inline-block; overflow: hidden;
+  height: 1.2em; vertical-align: bottom;
+  transition: width .5s cubic-bezier(.65, 0, .35, 1);
+}
+.rotator__word {
+  position: absolute; left: 0; top: 0; color: var(--muted);
+  transform: translateY(105%); opacity: 0;
+  transition: transform .55s cubic-bezier(.65, 0, .35, 1), opacity .4s ease;
+}
+.rotator__word.is-active { position: relative; transform: none; opacity: 1; }
+.rotator__word.is-leaving { transform: translateY(-105%); opacity: 0; }
+
+/* --- Section title ("previously worked with", "recent works") --- */
+.section-title { font-family: var(--font-head); font-weight: 400; font-size: 24px; line-height: 1.2; color: var(--yellow); }
+
+/* --- Footer --- */
+.footer { padding: 0 0 64px; }
+.footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--cream); }
+.footer__social { display: flex; align-items: center; gap: 16px; }
+.footer__social a { display: flex; transition: opacity .2s; }
+.footer__social a:hover { opacity: .7; }
+.footer__social img { width: 24px; height: 24px; }
+
+@media (max-width: 640px) {
+  :root { --gutter: 20px; }
+  .brand { gap: 12px; }
+  .brand__mark { width: 26px; }
+  .footer { padding-bottom: 40px; }
+}

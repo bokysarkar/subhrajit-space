@@ -1,0 +1,56 @@
+/* --- Case study page (Figma node 1040:1726) --- */
+.case { --container: 800px; }
+
+/* Back link — not in Figma; added so visitors can return home */
+.case__back {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 40px;
+  font-family: var(--font-head); font-weight: 700; font-size: 18px; text-decoration: none;
+}
+.case__back img { width: 18px; }
+.case__back span:last-child { color: var(--muted); transition: color .2s; }
+.case__back:hover span:last-child { color: var(--white); }
+
+/* Hero */
+.case-hero { padding-top: 56px; }
+.case-hero__header { display: flex; align-items: center; gap: 49px; }
+.case-hero__title { flex: 0 1 478px; font-family: var(--font-head); font-weight: 700; font-size: clamp(36px, 5.4vw, 64px); line-height: 1.2; }
+.case-hero__image { flex: 0 0 273px; aspect-ratio: 273 / 398; background: #d9d9d9; margin-left: auto; }
+
+.case-hero__meta { display: grid; grid-template-columns: 1fr 1fr 457px; gap: 32px; margin-top: 122px; }
+.case-hero__meta dt { font-weight: 600; line-height: 1.5; color: var(--label); }
+.case-hero__meta dd { margin-top: 16px; line-height: 1.4; color: var(--muted); }
+
+/* Sections */
+.case-body { margin-top: 180px; display: flex; flex-direction: column; gap: 160px; }
+.case-section__label { font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: .06em; text-transform: uppercase; color: var(--yellow); }
+.case-section__articles { display: flex; flex-direction: column; gap: 96px; margin-top: 48px; }
+
+.article__image { aspect-ratio: 16 / 9; background: #d9d9d9; margin-bottom: 32px; }
+.article__title { font-family: var(--font-head); font-weight: 400; font-size: 32px; line-height: 1.2; }
+.article__body { margin-top: 24px; color: var(--muted); line-height: 1.4; }
+.article__body p + p { margin-top: 1.4em; }
+.article__body strong { font-weight: 600; color: rgba(255, 255, 255, 0.85); }
+
+.case .footer { margin-top: 200px; }
+
+/* --- Tablet --- */
+@media (max-width: 860px) {
+  .case-hero__meta { grid-template-columns: 1fr 1fr; }
+  .case-hero__overview { grid-column: 1 / -1; }
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  .case__back { margin-top: 28px; }
+  .case-hero { padding-top: 40px; }
+  .case-hero__header { flex-direction: column; align-items: stretch; gap: 32px; }
+  .case-hero__title { flex: none; }
+  .case-hero__image { flex: none; width: 100%; aspect-ratio: 4 / 3; margin: 0; }
+  .case-hero__meta { margin-top: 64px; gap: 28px 24px; }
+  .case-body { margin-top: 96px; gap: 96px; }
+  .case-section__articles { gap: 64px; margin-top: 32px; }
+  .article__image { margin-bottom: 24px; }
+  .article__title { font-size: 26px; }
+  .article__body { margin-top: 16px; }
+  .case .footer { margin-top: 120px; }
+}

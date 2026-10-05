@@ -3,138 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subhrajit Sarkar — UX Designer</title>
-  <meta name="description" content="Subhrajit Sarkar is a UX designer with 5+ years in B2B healthcare SaaS, specialising in design systems, enterprise dashboards and AI-powered experiences." />
+  <title>Subhrajit Sarkar — Experience Designer</title>
+  <meta name="description" content="Subhrajit Sarkar is an experience designer building data-rich digital interfaces, now working on design systems and AI & agentic interfaces." />
   <link rel="canonical" href="https://subhrajit.space/" />
   <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#232107" />
 
   <!-- Open Graph / social previews -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://subhrajit.space/" />
-  <meta property="og:title" content="Subhrajit Sarkar — UX Designer" />
-  <meta property="og:description" content="Design systems, enterprise dashboards and AI-powered experiences for B2B healthcare SaaS." />
+  <meta property="og:title" content="Subhrajit Sarkar — Experience Designer" />
+  <meta property="og:description" content="Design systems, data-rich interfaces, and AI & agentic experiences." />
   <meta name="twitter:card" content="summary" />
 
   <!-- Structured data so search engines know who the site belongs to -->
   <script type="application/ld+json">
   { "@context": "https://schema.org", "@type": "Person",
-    "name": "Subhrajit Sarkar", "jobTitle": "UX Designer",
+    "name": "Subhrajit Sarkar", "jobTitle": "Experience Designer",
     "url": "https://subhrajit.space/" }
   </script>
 
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/brand-mark.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/home.css" />
 </head>
-<body>
+<body class="home">
+  <!-- Animated lenticular shader behind the hero (see js/shader.js) -->
+  <canvas class="shader-bg" data-shader="hero" aria-hidden="true"></canvas>
 
-  <!-- ===== Hero ===== -->
-  <header class="hero">
-    <img class="hero__logo" src="assets/logo.svg" alt="Subhrajit Sarkar logo" width="325" height="262" />
-    <p class="hero__quote">[design quote]</p>
-    <a class="hero__scroll" href="#about">
-      scroll down
-      <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
-        <path d="M3 3l7 7 7-7M3 13l7 7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </header>
+  <div class="page">
+    <!-- ===== Hero ===== -->
+    <header class="hero container">
+      <h1 class="hero__headline" data-reveal>
+        <span class="hero__strike">build with AI</span><br />
+        build with <span class="hero__accent">intent</span>. scale with AI
+      </h1>
 
-  <main>
-    <!-- ===== About ===== -->
-    <section class="about wrap" id="about">
-      <h2 class="label">about me:</h2>
-      <div class="about__text">
-        <p>I'm a UX Designer with 5+ years of experience in B2B Healthcare SaaS, specializing in designing complex, data-heavy products at scale. My work sits at the intersection of design systems, enterprise dashboards, and AI-powered experiences, helping teams turn complexity into clarity.</p>
-        <p>I've led the design of high-scale platforms used across multiple business units—building and maintaining design systems that support distinct visual identities while ensuring consistency, speed, and scalability. I enjoy solving problems where large datasets, advanced filters, and operational workflows meet real business outcomes.</p>
-        <p>My experience includes designing AI-driven chatbot interfaces, no-code internal tools, bi-directional analytics dashboards, and enterprise-grade admin panels serving hundreds of users. I've also worked on some of the company's most impactful products, driving measurable improvements in adoption, productivity, and decision-making efficiency.</p>
+      <div class="intro" data-reveal-group>
+        <div data-reveal>
+          <p class="intro__welcome">welcome to</p>
+          <p class="brand" aria-label="subhrajit.space">
+            <img class="brand__mark" src="/assets/brand-mark.svg" alt="" width="37" height="45" />
+            <span class="brand__text" aria-hidden="true">
+              <span>subhrajit</span><span class="brand__dot">.</span>
+              <span class="rotator" data-rotator>
+                <span class="rotator__word is-active">space</span>
+                <span class="rotator__word">designsystem</span>
+                <span class="rotator__word">casestudies</span>
+                <span class="rotator__word">articles</span>
+              </span>
+            </span>
+          </p>
+        </div>
+        <div class="intro__about" data-reveal>
+          <p>an experience designer</p>
+          <p>building data-rich digital interfaces for the last 5 years</p>
+          <p>now working in design system and AI &amp; agentic interfaces</p>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <!-- ===== Worked with ===== -->
-    <section class="clients wrap" aria-labelledby="clients-title">
-      <h2 class="label" id="clients-title">worked with:</h2>
-      <ul class="clients__list">
-        <li><img src="assets/norstella.png" alt="Norstella" width="158" height="40" /></li>
-        <li><img src="assets/mmit.png" alt="MMIT" width="140" height="40" /></li>
-        <li><img src="assets/healthworks-ai.png" alt="HealthWorks AI" width="261" height="40" /></li>
-        <li><img src="assets/teg-analytics.png" alt="TEG Analytics" width="134" height="40" /></li>
-      </ul>
-    </section>
+    <main>
+      <!-- ===== Previously worked with ===== -->
+      <section class="companies container" aria-labelledby="companies-title">
+        <h2 class="section-title" id="companies-title" data-reveal>previously worked with</h2>
+        <ul class="companies__grid" data-reveal-group>
+          <li data-reveal><img src="/assets/norstella-light.png" alt="Norstella" width="158" height="34" /></li>
+          <li data-reveal><img src="/assets/mmit-light.png" alt="MMIT" width="154" height="40" /></li>
+          <li data-reveal><img src="/assets/teg-analytics-light.png" alt="TEG Analytics" width="152" height="40" /></li>
+          <li data-reveal><img src="/assets/healthworks-ai-light.png" alt="HealthWorks AI" width="258" height="38" /></li>
+        </ul>
+      </section>
 
-    <!-- ===== Recent works ===== -->
-    <section class="works wrap" aria-labelledby="works-title">
-      <h2 class="works__title" id="works-title">Recent Works</h2>
-      <div class="filter" role="group" aria-label="Filter works">
-        <span class="filter__label">Filter by:</span>
-        <button class="filter__btn is-active" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter__btn" data-filter="case-study" aria-pressed="false">Case Study</button>
-        <button class="filter__btn" data-filter="article" aria-pressed="false">Article</button>
+      <!-- ===== Recent works ===== -->
+      <section class="works container" aria-labelledby="works-title">
+        <h2 class="section-title" id="works-title" data-reveal>recent works</h2>
+
+        <div class="works__row works__row--2" data-reveal-group>
+          <a class="work" href="/work/mui-design-system/" data-reveal>
+            <div>
+              <h3 class="work__title">a MUI based design system that serves multiple brands</h3>
+              <p class="work__meta"><span>case study</span><span>design system</span><span>2026</span></p>
+            </div>
+            <div class="work__media work__media--cover">
+              <img src="/assets/design-system-cover.webp" alt="Design system overview: tokens, components and patterns" width="1400" height="515" loading="lazy" />
+            </div>
+          </a>
+          <article class="work" data-reveal>
+            <div>
+              <h3 class="work__title">an advanced search that helps to discover a platform effectively</h3>
+              <p class="work__meta"><span>case study</span><span>application</span><span>2026</span></p>
+            </div>
+            <div class="work__media work__media--soon">
+              <canvas data-shader="card" aria-hidden="true"></canvas>
+              <p class="work__soon">coming soon</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="works__row works__row--3" data-reveal-group>
+          <article class="work" data-reveal>
+            <div>
+              <h3 class="work__title">machine readable design system</h3>
+              <p class="work__meta"><span>article</span><span>AI</span><span>2026</span></p>
+            </div>
+            <div class="work__media work__media--soon">
+              <canvas data-shader="card" aria-hidden="true"></canvas>
+              <p class="work__soon">coming soon</p>
+            </div>
+          </article>
+          <article class="work" data-reveal>
+            <div>
+              <h3 class="work__title">product research &amp; discovery using AI</h3>
+              <p class="work__meta"><span>article</span><span>AI</span><span>2024</span></p>
+            </div>
+            <div class="work__media work__media--soon">
+              <canvas data-shader="card" aria-hidden="true"></canvas>
+              <p class="work__soon">coming soon</p>
+            </div>
+          </article>
+          <article class="work" data-reveal>
+            <div>
+              <h3 class="work__title">a scalable admin panel to manage b2b clients</h3>
+              <p class="work__meta"><span>case study</span><span>application</span><span>2026</span></p>
+            </div>
+            <div class="work__media work__media--soon">
+              <canvas data-shader="card" aria-hidden="true"></canvas>
+              <p class="work__soon">coming soon</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="container footer__inner" data-reveal>
+        <div class="footer__social">
+          <span>Find me on:</span>
+          <!-- TODO: replace # with real profile URLs -->
+          <a href="#" aria-label="LinkedIn"><img src="/assets/linkedin.svg" alt="" width="24" height="24" /></a>
+          <a href="#" aria-label="X"><img src="/assets/x.svg" alt="" width="24" height="24" /></a>
+        </div>
+        <span>© 2026 Subhrajit Sarkar</span>
       </div>
+    </footer>
+  </div>
 
-      <!-- Placeholder cards: swap the .card__img div for an <img> when visuals are ready -->
-      <div class="grid">
-        <article class="card" data-type="case-study">
-          <div class="card__img"></div>
-          <div class="card__body">
-            <h3>MUI-based multi brand design system</h3>
-            <p>One design system, N brands, no forked components</p>
-          </div>
-        </article>
-        <article class="card" data-type="case-study">
-          <div class="card__img"></div>
-          <div class="card__body">
-            <h3>MUI-based multi brand design system</h3>
-            <p>One design system, N brands, no forked components</p>
-          </div>
-        </article>
-        <article class="card" data-type="article">
-          <div class="card__img"></div>
-          <div class="card__body">
-            <h3>MUI-based multi brand design system</h3>
-            <p>One design system, N brands, no forked components</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <div class="footer__social">
-        <span>Let's connect on:</span>
-        <!-- TODO: replace # with real profile URLs -->
-        <a href="#" aria-label="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-        </a>
-        <a href="#" aria-label="X">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.58-6.63 7.58H.48l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.48 3.24H4.3l13.31 17.41z"/></svg>
-        </a>
-      </div>
-      <span>© 2026 Subhrajit Sarkar</span>
-    </div>
-  </footer>
-
-  <script>
-    // Recent Works filter: show cards whose data-type matches the chosen button
-    const buttons = document.querySelectorAll(".filter__btn");
-    const cards = document.querySelectorAll(".card");
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const filter = btn.dataset.filter;
-        buttons.forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle("is-active", active);
-          b.setAttribute("aria-pressed", String(active));
-        });
-        cards.forEach((card) => {
-          card.hidden = filter !== "all" && card.dataset.type !== filter;
-        });
-      });
-    });
-  </script>
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/shader.js"></script>
 </body>
 </html>
